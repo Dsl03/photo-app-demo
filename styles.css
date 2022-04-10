@@ -3,6 +3,7 @@ body {
     margin: 0px;
 }
 
+
  .navbar{
     display: flex;
     background-color: white;
@@ -15,6 +16,7 @@ body {
     margin: 0px; 
     margin-left: 50 px;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 .username_signout {
