@@ -1,0 +1,32 @@
+.storyimg {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border: solid 2px lightgrey;
+    padding:0px;
+}
+
+.story {
+    background-color: white;
+    width: 50vw;
+    margin-left: 10vw;
+    display:flex;
+    align-items: left;
+    padding:5px;
+}
+
+.storytext {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.storyelement {
+    display: flex;
+    width: 70px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top:10px;
+    align-items: center;
+    flex-direction: column;
+}
+
