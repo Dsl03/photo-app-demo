@@ -1,3 +1,38 @@
+body {
+    display: block;
+    margin: 0px;
+}
+
+ .navbar{
+    display: flex;
+    background-color: white;
+    padding: 10px;
+    padding-left: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-between;
+    margin: 0px; 
+    margin-left: 50 px;
+    margin-bottom: 10px;
+}
+
+.username_signout {
+    display: flex;
+    padding: 3px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.signout{
+    margin-left: 5px;
+    color: blue;
+}
+
+
+
 .storyimg {
     border-radius: 50%;
     width: 70px;
@@ -13,6 +48,7 @@
     display:flex;
     align-items: left;
     padding:5px;
+    height: 100%;
 }
 
 .storytext {
@@ -30,3 +66,65 @@
     flex-direction: column;
 }
 
+
+.suggestion {
+    width: 30vw;
+    margin-left: 10px;
+    padding:10px;
+}
+
+.suggestion-profile {
+    display:flex;
+    align-items: center;
+}
+
+.suggestion-profile-image{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border: solid 1px lightgrey;
+}
+
+.suggestion-profile-name{
+    font-size:30px;
+    margin-left:15px;
+}
+
+.suggestion-main {
+    padding:10px;
+}
+
+.suggestion-main-text{
+    color:grey;
+    font-size: 22px;
+    margin: 0px;
+}
+
+.suggestion-main-ind{
+    display:flex;
+    align-items: center;
+    padding:10px;
+}
+
+.suggestion-main-image{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: solid 1px lightgrey;
+    margin-right: 20px;
+}
+
+.suggestion-indname{
+    margin:0px;
+    font-weight: bold;
+}
+
+.suggestion-indsugforu{
+    margin:0px;
+    color:grey
+}
+
+.suggestion-follow{
+    margin-left: 20px;
+    color:blue;
+}
