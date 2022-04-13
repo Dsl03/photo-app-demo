@@ -6,6 +6,10 @@ body {
 
  .navbar{
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     background-color: white;
     padding: 10px;
     padding-left: 10px;
@@ -17,6 +21,8 @@ body {
     margin-left: 50 px;
     margin-bottom: 10px;
     align-items: center;
+    padding-left: 40px;
+    padding-right: 30px;
 }
 
 .username_signout {
@@ -30,7 +36,8 @@ body {
 
 .signout{
     margin-left: 5px;
-    color: blue;
+    color: #2c699b
+    ;
 }
 
 
@@ -51,6 +58,8 @@ body {
     align-items: left;
     padding:5px;
     height: 100%;
+    margin-top: 14vh;
+    font-family: Helvetica, sans-serif;
 }
 
 .storytext {
@@ -73,6 +82,12 @@ body {
     width: 30vw;
     margin-left: 10px;
     padding:10px;
+    position: fixed;
+    margin-top: 15vh;
+    top: 0;
+    left: 62vw;
+    right: 0;
+    font-family: Helvetica, sans-serif;
 }
 
 .suggestion-profile {
@@ -84,7 +99,7 @@ body {
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    border: solid 1px lightgrey;
+    border: solid 1px grey;
 }
 
 .suggestion-profile-name{
@@ -128,5 +143,79 @@ body {
 
 .suggestion-follow{
     margin-left: 20px;
-    color:blue;
+    color:#2c699b;
+}
+
+.cardbox{
+    background-color: white;
+    margin-left: 10vw;
+    margin-top: 15px;
+    height:90vh;
+    overflow-wrap: break-word;
+    border: 1px solid lightgrey;
+    font-family: Helvetica, sans-serif;
+}
+
+.cardname {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.cardimgimg {
+    width: 100%;
+    max-height: 50vh;
+}
+
+.captions{
+    overflow-wrap: break-word;
+    inline-size: 48vw;
+    margin-left: 15px;
+}
+
+.commenticons{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    margin-top: 1vh;
+    margin-left: 10px;
+}
+
+.comments{
+    overflow-wrap: break-word;
+    inline-size: 48vw;
+    margin-left: 15px;
+}
+
+.comment{
+    margin-top: 0px;
+    margin-bottom: 3px;
+}
+
+.leftside{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.cardpostcomment{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.cardcommentbox{
+    border-bottom: solid 1px lightgrey;
+    padding-bottom: 5px;
+}
+
+.addcomment{
+    margin-left: 5px;
+    color:grey;
+    font-size: 17px;
+    margin-left: 10px;
 }
