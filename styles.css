@@ -23,6 +23,7 @@ body {
     align-items: center;
     padding-left: 40px;
     padding-right: 30px;
+    
 }
 
 .username_signout {
@@ -32,12 +33,15 @@ body {
     flex-wrap: nowrap;
     align-content: space-between;
     justify-content: space-between;
+    margin-top: 15px;
 }
 
-.signout{
+.signoutlink {
     margin-left: 5px;
-    color: #2c699b
-    ;
+    color: #2c699b;
+    margin-top: 15px;
+    text-decoration: none;
+
 }
 
 
@@ -144,16 +148,19 @@ body {
 .suggestion-follow{
     margin-left: 20px;
     color:#2c699b;
+    text-decoration: none;
 }
 
 .cardbox{
     background-color: white;
     margin-left: 10vw;
     margin-top: 15px;
-    height:765x;
+    /* height:765x; */
     overflow-wrap: break-word;
     border: 1px solid lightgrey;
     font-family: Helvetica, sans-serif;
+    width: auto;
+    height: 100%;
 }
 
 .cardname {
@@ -173,6 +180,8 @@ body {
     overflow-wrap: break-word;
     inline-size: 48vw;
     margin-left: 15px;
+    text-decoration: none;
+
 }
 
 .commenticons{
@@ -188,11 +197,15 @@ body {
     overflow-wrap: break-word;
     inline-size: 48vw;
     margin-left: 15px;
+    text-decoration: none;
+
 }
 
 .comment{
     margin-top: 0px;
     margin-bottom: 3px;
+    text-decoration: none;
+    
 }
 
 .leftside{
@@ -218,7 +231,17 @@ body {
     color:grey;
     font-size: 17px;
     margin-left: 10px;
+    text-decoration: none;
 }
+.postlink{
+    text-decoration: none;
+
+}
+.morelink{
+    text-decoration: none;
+}
+
+
 
 @media only screen and (max-width: 1000px){
     .suggestion{
