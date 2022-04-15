@@ -241,6 +241,19 @@ body {
     text-decoration: none;
 }
 
+.commentform{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    margin-left: 10px;
+    font-size: 17px;
+    width: 600px;
+}
+
+.commentform:focus {
+    outline-width: 0;
+}
 
 
 @media only screen and (max-width: 1000px){
