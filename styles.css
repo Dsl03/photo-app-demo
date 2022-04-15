@@ -37,7 +37,7 @@ body {
 }
 
 .signoutlink {
-    margin-left: 5px;
+    margin-left: 20px;
     color: #2c699b;
     margin-top: 15px;
     text-decoration: none;
@@ -236,8 +236,6 @@ body {
 }
 .postlink{
     text-decoration: none;
-    margin-left: 680px;
-
 }
 .morelink{
     text-decoration: none;
