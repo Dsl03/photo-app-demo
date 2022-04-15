@@ -217,6 +217,7 @@ body {
 .cardpostcomment{
     display: flex;
     justify-content: space-between;
+    margin-right: 0px;
     align-items: center;
     margin-right: 30px;
 }
@@ -235,6 +236,7 @@ body {
 }
 .postlink{
     text-decoration: none;
+    margin-left: 680px;
 
 }
 .morelink{
