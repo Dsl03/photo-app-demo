@@ -62,7 +62,7 @@ body {
     align-items: left;
     padding:5px;
     height: 100%;
-    margin-top: 14vh;
+    margin-top: 17vh;
     font-family: Helvetica, sans-serif;
 }
 
@@ -248,7 +248,7 @@ body {
         display: none;
     }
     .story{
-        margin-top: 7vh;
+        margin-top: 17vh;
         width:100vw;
         margin-right: 5vw;
         margin-left: 5vw;
