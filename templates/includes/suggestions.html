@@ -1,8 +1,10 @@
+
 <section class="suggestion">
     <div class="suggestion-profile">
-        <img class="suggestion-profile-image" src="https://picsum.photos/200/300?random=6"/>
-        <p class="suggestion-profile-name" style="font-family: Open Sans">TestName</p>
+        <!--<img class="suggestion-profile-image" src='https://picsum.photos/200/300?random=7'/>-->
+        <p class="suggestion-profile-name" style="font-family: Open Sans"> {{user.get('username')}} </p>
     </div>
+    <!-- {% for suggestion in suggestions %} -->
     <section class="suggestion-main" >
         <p class="suggestion-main-text">Suggestions for you</p>
         <div class="suggestion-main-ind">
