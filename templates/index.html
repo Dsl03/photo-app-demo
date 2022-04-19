@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Photo-App</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="C:\Users\david\OneDrive\Documents\GitHub\photo-app\static\styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,17 +10,8 @@
 </head>
 <!-- Navbar -->
 <body style="background-color: #f2f2f2;">
-    <section class ="navbar">
-        <p style="font-size:25px; font-family: Open Sans"><b>Photo App</b><p>
-        <div class = "username_signout">
-
-            <div class ="username">
-                <p>username</p>
-            </div class = "signout">
-                <a class = "signoutlink"href= "" > signout </a>
-            </div>
-        </div>
-    </section>
+    
+    {% include "includes/navbar.html" %}
         
     <!--section for stories-->
     <section style="display:flex ">
@@ -259,55 +250,7 @@
 
         </section>
         <!--section for suggestion bar-->
-        <section class="suggestion">
-            <div class="suggestion-profile">
-                <img class="suggestion-profile-image" src="https://picsum.photos/200/300?random=6"/>
-                <p class="suggestion-profile-name" style="font-family: Open Sans">TestName</p>
-            </div>
-            <section class="suggestion-main" >
-                <p class="suggestion-main-text">Suggestions for you</p>
-                <div class="suggestion-main-ind">
-                    <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=7"/>
-                    <div>
-                        <p class="suggestion-indname">TestName</p>
-                        <p class="suggestion-indsugforu">Suggested for you</p>
-                    </div>
-                    <a class = "suggestion-follow" href= "" > follow</a>
-                </div>
-                <div class="suggestion-main-ind">
-                    <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=8"/>
-                    <div>
-                        <p class="suggestion-indname">TestName</p>
-                        <p class="suggestion-indsugforu">Suggested for you</p>
-                    </div>
-                    <a class = "suggestion-follow" href= "" > follow</a>
-                </div>
-                <div class="suggestion-main-ind">
-                    <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=9"/>
-                    <div>
-                        <p class="suggestion-indname">TestName</p>
-                        <p class="suggestion-indsugforu">Suggested for you</p>
-                    </div>
-                    <a class = "suggestion-follow" href= "" > follow</a>
-                </div>
-                <div class="suggestion-main-ind">
-                    <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=10"/>
-                    <div>
-                        <p class="suggestion-indname">TestName</p>
-                        <p class="suggestion-indsugforu">Suggested for you</p>
-                    </div>
-                    <a class = "suggestion-follow" href= "" > follow</a>
-                </div>
-                <div class="suggestion-main-ind">
-                    <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=11"/>
-                    <div>
-                        <p class="suggestion-indname">TestName</p>
-                        <p class="suggestion-indsugforu">Suggested for you</p>
-                    </div>
-                    <a class = "suggestion-follow" href= "" > follow</a>
-                </div>
-            </section>
-        </section>
+        {% include "includes/suggestions.html" %}
         
     </section>
 
