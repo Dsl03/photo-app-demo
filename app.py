@@ -16,6 +16,17 @@ def home():
         suggestions=fake_data.generate_suggestions(n=7)
     )
 
+@app.route('/json')
+def other():
+        current_user = fake_data.generate_user()
+        return render_template(
+        'starter_template.html',
+        #'starter_template.html',
+        user=current_user,
+        posts=fake_data.generate_posts(n=8),
+        stories=fake_data.generate_stories(n=6),
+        suggestions=fake_data.generate_suggestions(n=7)
+        )
 #####################################
 # Just to get you thinking about    #
 # how to build a REST API (for HW3) #

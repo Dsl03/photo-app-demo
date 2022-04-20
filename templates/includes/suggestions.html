@@ -6,45 +6,15 @@
     </div>
     <section class="suggestion-main" >
         <p class="suggestion-main-text">Suggestions for you</p>
-        <div class="suggestion-main-ind">
-            <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=7"/>
-            <div>
-                <p class="suggestion-indname">TestName</p>
-                <p class="suggestion-indsugforu">Suggested for you</p>
+        {% for user in suggestions %}
+            <div class="suggestion-main-ind">
+                <img class="suggestion-main-image" src=" {{ user.get('image_url') }} "/>
+                <div>
+                    <p class="suggestion-indname">{{ user.get('username') }}</p>
+                    <p class="suggestion-indsugforu">Suggested for you</p>
+                </div>
+                <a class = "suggestion-follow" href= "" > follow</a>
             </div>
-            <a class = "suggestion-follow" href= "" > follow</a>
-        </div>
-        <div class="suggestion-main-ind">
-            <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=8"/>
-            <div>
-                <p class="suggestion-indname">TestName</p>
-                <p class="suggestion-indsugforu">Suggested for you</p>
-            </div>
-            <a class = "suggestion-follow" href= "" > follow</a>
-        </div>
-        <div class="suggestion-main-ind">
-            <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=9"/>
-            <div>
-                <p class="suggestion-indname">TestName</p>
-                <p class="suggestion-indsugforu">Suggested for you</p>
-            </div>
-            <a class = "suggestion-follow" href= "" > follow</a>
-        </div>
-        <div class="suggestion-main-ind">
-            <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=10"/>
-            <div>
-                <p class="suggestion-indname">TestName</p>
-                <p class="suggestion-indsugforu">Suggested for you</p>
-            </div>
-            <a class = "suggestion-follow" href= "" > follow</a>
-        </div>
-        <div class="suggestion-main-ind">
-            <img class="suggestion-main-image" src="https://picsum.photos/200/300?random=11"/>
-            <div>
-                <p class="suggestion-indname">TestName</p>
-                <p class="suggestion-indsugforu">Suggested for you</p>
-            </div>
-            <a class = "suggestion-follow" href= "" > follow</a>
-        </div>
+        {% endfor %}
     </section>
 </section>
