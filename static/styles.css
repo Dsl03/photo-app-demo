@@ -255,6 +255,10 @@ body {
     outline-width: 0;
 }
 
+.morecom{
+    text-decoration: none;
+}
+
 
 @media only screen and (max-width: 1000px){
     .suggestion{

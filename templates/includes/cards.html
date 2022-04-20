@@ -27,21 +27,21 @@
             <p><b>{{ post.get('likes') }} Likes</b> </p>
         </div>
         <div class ="captions">
-            <p ><span style="font-weight: bold; margin-left: 3px;">{{post.get('user').get('username')}}</span>  {{post.get('title')}}
+            <p ><span style="font-weight: bold; margin-left: 3px;">{{post.get('user').get('username')}}</span>  {{post.get('title')}}..
             <a class = "morelink", href = "" style="color:#2c699b">more</a></p>
         </div>
 
         {% if post.get('comments')|length > 1 %} 
             <div class = "comments">
+                <a class = "morecom" href = "" style="color:#2c699b">View all {{post.get('comments')|length -1}} comments</a>
                 <p class = "comment"><span style ="font-weight: bold;margin-left: 3px;">{{post.get('comments')[0].get('user').get('username')}}</span> {{post.get('comments')[0].get('text')}}</p>
-                <p>get {{post.get('comments')|length -1}} more comments</p>
-                <p style="color:grey; margin:0px;">{{post.get('display_time')}}</p>
+                <p style="color:grey;">{{post.get('display_time')}}</p>
             </div>
         {% else %}
             {% if post.get('comments')|length == 1 %}
                 <div class = "comments">
                     <p class = "comment"><span style ="font-weight: bold;margin-left: 3px;">{{post.get('comments')[0].get('user').get('username')}}</span> {{post.get('comments')[0].get('text')}}</p>
-                    <p style="color:grey; margin:0px;">{{post.get('display_time')}}</p>
+                    <p style="color:grey;">{{post.get('display_time')}}</p>
                 </div>
             {% endif %}
         {% endif %}
