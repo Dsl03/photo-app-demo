@@ -45,7 +45,7 @@ class TestFollowingListEndpoint(unittest.TestCase):
             'user_id': user.get('id')
         }
         response = requests.post(root_url + '/api/following', json=body)
-        # print(response.text)
+        #print(response.text)
         self.assertEqual(response.status_code, 201)
         new_person_to_follow = response.json()
         following = new_person_to_follow.get('following')

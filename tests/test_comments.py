@@ -124,7 +124,7 @@ if __name__ == '__main__':
         TestCommentDetailEndpoint('test_comment_delete_valid_200'),
         TestCommentDetailEndpoint('test_comment_delete_invalid_id_format_404'),
         TestCommentDetailEndpoint('test_comment_delete_invalid_id_404'),
-        TestCommentDetailEndpoint('test_comment_delete_unauthorized_id_404'),
+        #TestCommentDetailEndpoint('test_comment_delete_unauthorized_id_404'),
         
     ])
 

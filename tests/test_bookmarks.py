@@ -13,11 +13,12 @@ class TestBookmarkListEndpoint(unittest.TestCase):
         response = requests.get('{0}/api/bookmarks'.format(root_url))
         self.assertEqual(response.status_code, 200)
         bookmarks = response.json()
+        #print(bookmarks)
         bookmark_ids = utils.get_bookmark_ids(self.current_user.get('id'))
         self.assertTrue(len(bookmarks) > 1)
         for bookmark in bookmarks:
-            # print(bookmark.get('id'), bookmark_ids)
             self.assertTrue(bookmark.get('id') in bookmark_ids)
+        
 
     def test_bookmarks_get_check_if_data_structure_correct(self):
         response = requests.get('{0}/api/bookmarks'.format(root_url))
@@ -41,7 +42,6 @@ class TestBookmarkListEndpoint(unittest.TestCase):
             'post_id': post_id
         }
         response = requests.post(root_url + '/api/bookmarks', json=body)
-        # print(response.text)
         new_bookmark = response.json()
         self.assertEqual(response.status_code, 201)
 
@@ -69,7 +69,6 @@ class TestBookmarkListEndpoint(unittest.TestCase):
         new_bookmark = response.json()
         self.assertEqual(response.status_code, 201)
 
-
         # check that the values are in the returned json:
         self.assertEqual(new_bookmark.get('post').get('id'), post_id)
 
@@ -88,8 +87,9 @@ class TestBookmarkListEndpoint(unittest.TestCase):
         body = {
             'post_id': bookmark.get('post_id')
         }
+
         response = requests.post(root_url + '/api/bookmarks', json=body)
-        # print(response.text)
+        #print(response.text)
         self.assertEqual(response.status_code, 400)
 
     def test_bookmark_post_invalid_post_id_format_400(self):
@@ -114,7 +114,7 @@ class TestBookmarkListEndpoint(unittest.TestCase):
             'post_id': post.get('id'),
         }
         response = requests.post(root_url + '/api/bookmarks', json=body)
-        # print(response.text)
+        #print(response.text)
         self.assertEqual(response.status_code, 404)
     
     def test_bookmark_post_missing_post_id_400(self):
