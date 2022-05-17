@@ -29,7 +29,7 @@ class PostListEndpoint(Resource):
             return Response(json.dumps({"message" : "the limit parameter is invalid"}), mimetype="application/json", status=400)
 
         posts = Post.query.filter(Post.user_id.in_(user_ids)).limit(limit).all()
-        posts_json = [post.to_dict() for post in posts]
+        posts_json = [post.to_dict(user=self.current_user) for post in posts]
         return Response(json.dumps(posts_json), mimetype="application/json", status=200)
 
     def post(self):
@@ -79,7 +79,7 @@ class PostDetailEndpoint(Resource):
 
         db.session.commit()
 
-        return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
+        return Response(json.dumps(post.to_dict(user=self.current_user)), mimetype="application/json", status=200)
 
 
     def delete(self, id):

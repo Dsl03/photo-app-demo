@@ -1,12 +1,14 @@
-
-<section class ="navbar">
-    <p style="font-size:25px; font-family: Open Sans"><b>Photo App</b><p>
-    <div class = "username_signout">
-
-        <div class ="username">
-            <p>{{user.get('username')}}</p>
-        </div class = "signout">
-            <a class = "signoutlink"href= "" > signout </a>
-        </div>
-    </div>
-</section>
+<nav class="main-nav">
+    <h1>Photo App</h1>
+    <ul>
+        <li>
+            {% if request.url_rule.endpoint == 'api_docs' %}
+                <a href="/">Home</a>
+            {% else %}
+                <a href="/api">API Docs</a>
+            {% endif %}
+        </li>
+        <li><span>{{ user.username }}</span></li>
+        <li><a href="#">Sign out</a></li>
+    </ul>
+</nav>
