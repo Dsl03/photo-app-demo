@@ -63,12 +63,12 @@ const user2Html = user => {
 }
 
 const getSuggestions = () => {
-    fetch('https://photo-app-396nu.herokuapp.com/api/suggestions/')
+    fetch('/api/suggestions/')
         .then(response => response.json())
         .then(users =>{
             console.log(users);
             const html = users.map(user2Html).join('\n')
-            document.querySelector('#suggestions').innerHTML = html;
+            document.querySelector('.suggestions').innerHTML = html;
 
         })
 }
