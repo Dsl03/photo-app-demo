@@ -36,8 +36,8 @@ const displayProfile = () => {
     })
     .then(response => response.json())
     .then(profile =>  {
-            const html = story2Html(profile);
-            document.querySelector('.profile').innerHTML = html;
+            const html = profile2Html(profile);
+            document.querySelector('#user-profile').innerHTML = html;
     });
 };
 
