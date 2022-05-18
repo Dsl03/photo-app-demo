@@ -19,7 +19,7 @@ const displayStories = () => {
 
 const profile2Html = profile => {
     return `
-        <div>
+        <div class = "profile">
             <img src="${ profile.thumb_url }" class="pic" alt="user profile pic for ${ profile.username }" />
             <p>${ profile.username }</p>
         </div>
