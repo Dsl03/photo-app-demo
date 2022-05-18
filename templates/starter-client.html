@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="/static/css/starter-client.css">
-
+    
     <!-- client-side scripts -->
     <script lang="text/javascript" src="/static/js/hw04.js" defer></script>
 </head>
@@ -14,12 +14,15 @@
     {% include 'includes/navbar.html'  %}
 
     <aside>
-        <header>
+        <header id = "user-profile">
+            <p class="suggestion-profile-name"></p>
+            
             <!-- user profile rendered client-side -->
+
         </header>
         <div class="suggestions">
             <p class="suggestion-text">Suggestions for you</p>
-            <div>
+            <div id = "suggestions">
                 <!-- Suggestions rendered client-side -->
                 <p>TBD</p>
             </div>

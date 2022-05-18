@@ -1,26 +1,273 @@
-/*
-    Replace this CSS file with the one style.css file you made in HW1
-*/
-
 body {
-    margin: 5%;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f2f2f2;
-    /* display: flex; */
-    min-height: 100vh;
-    /* justify-content: center; */
-    /* align-items: center; */
+    display: block;
+    margin: 0px;
 }
 
-pre {
-    width: 100%;
-    white-space: pre-wrap;       /* Since CSS 2.1 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+ .navbar{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
     padding: 10px;
-    border: solid 1px #CCC;
-    background: white;
-    border-radius: 4px;
+    padding-left: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-between;
+    margin: 0px; 
+    margin-left: 50 px;
+    margin-bottom: 10px;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 30px;
+    
+}
+
+.username_signout {
+    display: flex;
+    padding: 3px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.signoutlink {
+    margin-left: 20px;
+    color: #2c699b;
+    margin-top: 15px;
+    text-decoration: none;
+
+}
+
+
+
+.storyimg {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border: solid 2px lightgrey;
+    padding:0px;
+}
+
+.story {
+    background-color: white;
+    width: 50vw;
+    margin-left: 10vw;
+    display:flex;
+    align-items: left;
+    padding:5px;
+    height: 100%;
+    margin-top: 17vh;
+    font-family: Helvetica, sans-serif;
+}
+
+.storytext {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.storyelement {
+    display: flex;
+    width: 70px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top:10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.suggestion {
+    width: 30vw;
+    margin-left: 10px;
+    padding:10px;
+    position: fixed;
+    margin-top: 15vh;
+    top: 0;
+    left: 62vw;
+    right: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+.suggestion-profile {
+    display:flex;
+    align-items: center;
+}
+
+.suggestion-profile-image{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border: solid 1px grey;
+}
+
+.suggestion-profile-name{
+    font-size:30px;
+    margin-left:15px;
+}
+
+.suggestion-main {
+    padding:10px;
+}
+
+.suggestion-main-text{
+    color:grey;
+    font-size: 22px;
+    margin: 0px;
+}
+
+.suggestion-main-ind{
+    display:flex;
+    align-items: center;
+    padding:10px;
+}
+
+.suggestion-main-image{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: solid 1px lightgrey;
+    margin-right: 20px;
+}
+
+.suggestion-indname{
+    margin:0px;
+    font-weight: bold;
+}
+
+.suggestion-indsugforu{
+    margin:0px;
+    color:grey
+}
+
+.suggestion-follow{
+    margin-left: 20px;
+    color:#2c699b;
+    text-decoration: none;
+}
+
+.cardbox{
+    background-color: white;
+    margin-left: 10vw;
+    margin-top: 15px;
+    /* height:765x; */
+    overflow-wrap: break-word;
+    border: 1px solid lightgrey;
+    font-family: Helvetica, sans-serif;
+    width: auto;
+    height: 100%;
+}
+
+.cardname {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.cardimgimg {
+    width: 100%;
+    max-height: 50vh;
+}
+
+.captions{
+    overflow-wrap: break-word;
+    inline-size: 48vw;
+    margin-left: 15px;
+    text-decoration: none;
+
+}
+
+.commenticons{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    margin-top: 1vh;
+    margin-left: 10px;
+}
+
+.comments{
+    overflow-wrap: break-word;
+    inline-size: 48vw;
+    margin-left: 15px;
+    text-decoration: none;
+
+}
+
+.comment{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    text-decoration: none;
+    
+}
+
+.leftside{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.cardpostcomment{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0px;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.cardcommentbox{
+    border-bottom: solid 1px lightgrey;
+    padding-bottom: 5px;
+}
+
+.addcomment{
+    margin-left: 5px;
+    color:grey;
+    font-size: 17px;
+    margin-left: 10px;
+    text-decoration: none;
+}
+.postlink{
+    text-decoration: none;
+}
+.morelink{
+    text-decoration: none;
+}
+
+.commentform{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    margin-left: 10px;
+    font-size: 17px;
+    width: 400px;
+}
+
+.commentform:focus {
+    outline-width: 0;
+}
+
+
+@media only screen and (max-width: 1000px){
+    .suggestion{
+        display: none;
+    }
+    .story{
+        margin-top: 17vh;
+        width:100vw;
+        margin-right: 5vw;
+        margin-left: 5vw;
+    }
+    .cardbox{
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
 }
