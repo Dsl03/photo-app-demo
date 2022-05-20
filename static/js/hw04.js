@@ -8,7 +8,16 @@ const story2Html = story => {
 };
 
 const handleBookmark = ev => {
+    const elem = ev.currentTarget;
     console.log("Handle bookmark functionality")
+
+    if (elem.getAttribute('aria-checked') === 'true') {
+        unbookmarkPost(elem);
+    } else {
+        console.log('bookmark post');
+        bookmarkPost(elem);
+
+    }
 };
 
 const renderLikeButton = post => {
@@ -52,6 +61,7 @@ const renderBookmarkButton = post => {
     } else {
         return  `
         <button 
+            data-post-id = "${post.id}"
             data-like-id = "${post.current_user_bookmark_id}"
             aria-label = "Bookmark/ Unbookmark"
             aria-checked = "false"
@@ -96,17 +106,44 @@ const unlikePost = elem => {
 
 };
 
-const redrawPost = postId => {
+
+const unbookmarkPost = elem => {
+    console.log('unbookmark post');
+    const postId = elem.dataset.postId
+    fetch(`/api/bookmarks/${elem.dataset.bookmarkId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        redrawPost(postId)
+
+    });
+    
+
+};
+const redrawPost = (postId, callback) => {
     fetch(`api/posts/${postId}`)
         .then(response => response.json())
         .then(updatedPost => {
-            console.log(updatedPost);
-            const html = post2Html(updatedPost);
-            const newElement = stringToHTML(html);
-            const postElement = document.querySelector(`#post_${postId}`);
-            console.log(newElement.innerHTML);
-            postElement.innerHTML = newElement.innerHTML;
+            if (! callback){
+                redrawCard(updatedPost);
+            } else {
+                callback(updatedPost);
+            }
         })
+};
+
+const redrawCard = post => {
+    console.log(post);
+    const html = post2Html(post);
+    const newElement = stringToHTML(html);
+    const postElement = document.querySelector(`#post_${post.id}`);
+    console.log(newElement.innerHTML);
+    postElement.innerHTML = newElement.innerHTML;
 };
 
 const likePost = elem => {
@@ -133,12 +170,57 @@ const likePost = elem => {
 
 };
 
+const bookmarkPost = elem => {
+    console.log('bookmark post', elem);
+    const postId = Number(elem.dataset.postId);
+
+    const postData = {
+        "post_id": postId
+    }
+
+    console.log(postData)
+    fetch(`/api/bookmarks/`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        redrawPost(postId)
+    });
+
+};
+
 const stringToHTML = htmlString => {
     var parser = new DOMParser();
     var doc = parser.parseFromString(htmlString, 'text/html');
     return doc.body.firstChild;
 }
 
+const displayComments = post => {
+    if (post.comments.length  > 1){
+        //display button
+        return `<button data-post-id=${post.id} onclick="showModal(event)">View All ${post.comments.length} Comments</button>`;
+    }
+    else if (post.comments.length === 1){
+        return `<p>${post.comments[0].text}</p>`;
+    }
+    else{
+        return ";"
+    }
+}
+
+const showModal = ev => {
+    const postId = Number(ev.currentTarget.dataset.postId);
+    redrawPost(postId, post => {
+        const html = post2Modal(post);
+        document.querySelector(`#post_${post.id}`).insertAdjacentHTML('beforeend', html);
+    })
+    
+}
 
 const post2Html = post => {
     return `
@@ -150,11 +232,34 @@ const post2Html = post => {
 
         </div>
         <p>${post.caption }</p>
+        ${displayComments(post)}
+        <input type="text" placeholder="Add a Comment...">
+        <button onclick="addComment()">Add comment</button>
     </section>
 `;
 
 };
 
+const post2Modal = post => {
+    return `
+    <div class ="modal-bg" aria-hidden="false" role="dialog">
+        <section class="modal">
+            <button class="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
+            <img src="${post.image_url}"/>
+        </section>
+    </div>
+    `
+}
+
+const closeModal = ev =>{
+    console.log("close modal")
+    document.querySelector('.modal-bg').remove();
+
+}
+const addComment = ev => {
+    console.log('adding comment')
+
+}
 const displayPosts = () => {
     fetch('/api/posts')
         .then(response => response.json())
