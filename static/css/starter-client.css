@@ -322,6 +322,23 @@ main{
     margin-left:15px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.button-container button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+}
+
+.fas.fa-heart {
+    color: red;
+    
+}
+
 .profile{
     display: flex;    
     font-size:20px;
