@@ -26,6 +26,7 @@ const renderLikeButton = post => {
     } else {
         return  `
         <button 
+            data-post-id = "${post.id}"
             data-like-id = "${post.current_user_like_id}"
             aria-label = "Like/ Unlike"
             aria-checked = "false"
@@ -78,6 +79,7 @@ const handleLike = ev => {
 
 const unlikePost = elem => {
     console.log('unlike post');
+    const postId = elem.dataset.postId
     fetch(`/api/posts/likes/${elem.dataset.likeId}`, {
         method: "DELETE",
         headers: {
@@ -87,20 +89,35 @@ const unlikePost = elem => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        console.log('redraw the post');
+        redrawPost(postId)
+
     });
     
 
 };
 
+const redrawPost = postId => {
+    fetch(`api/posts/${postId}`)
+        .then(response => response.json())
+        .then(updatedPost => {
+            console.log(updatedPost);
+            const html = post2Html(updatedPost);
+            const newElement = stringToHTML(html);
+            const postElement = document.querySelector(`#post_${postId}`);
+            console.log(newElement.innerHTML);
+            postElement.innerHTML = newElement.innerHTML;
+        })
+};
+
 const likePost = elem => {
-    console.log('like post');
+    console.log('like post', elem);
+    const postId = Number(elem.dataset.postId);
 
     const postData = {
-        "post_id": Number(elem.dataset.postId)
+        "post_id": postId
     }
 
-
+    console.log(postData)
     fetch("/api/posts/likes/", {
         method: "POST",
         headers: {
@@ -111,16 +128,21 @@ const likePost = elem => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        redrawPost(postId)
     });
 
 };
 
-
+const stringToHTML = htmlString => {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(htmlString, 'text/html');
+    return doc.body.firstChild;
+}
 
 
 const post2Html = post => {
     return `
-    <section class = "card">
+    <section id="post_${post.id}" class = "card">
         <img src="${post.image_url }"  />
         <div class = "button-container">
             ${renderLikeButton(post)}
