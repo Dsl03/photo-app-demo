@@ -118,7 +118,7 @@ const likePost = elem => {
     }
 
     console.log(postData)
-    fetch("/api/posts/likes/", {
+    fetch(`/api/posts/likes/`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -245,7 +245,7 @@ const deleteFollower = (followingId,elem) => {
         elem.classList.add('follow')
         elem.classList.remove('unfollow')
         elem.removeAttribute('data-following-id')  
-        elem.setAttribute('aria-checked', 'fa;se') 
+        elem.setAttribute('aria-checked', 'false') 
     });
 }
 
