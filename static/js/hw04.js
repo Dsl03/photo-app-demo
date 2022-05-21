@@ -203,13 +203,19 @@ const stringToHTML = htmlString => {
 const displayComments = post => {
     if (post.comments.length  > 1){
         //display button
-        return `<button data-post-id=${post.id} onclick="showModal(event)">View All ${post.comments.length} Comments</button>`;
+        //return first comment
+        
+        return `
+        <div>
+            <button data-post-id=${post.id} onclick="showModal(event)">View All ${post.comments.length} Comments</button>
+            <p>${post.comments[post.comments.length-1].text}</p>
+        </div>`
     }
     else if (post.comments.length === 1){
-        return `<p>${post.comments[0].text}</p>`;
+        return `<p>${post.comments[0].text}</p>`
     }
     else{
-        return ";"
+        return ""
     }
 }
 
@@ -233,8 +239,8 @@ const post2Html = post => {
         </div>
         <p>${post.caption }</p>
         ${displayComments(post)}
-        <input type="text" placeholder="Add a Comment...">
-        <button onclick="addComment()">Add comment</button>
+        <input id="comment${post.id}" type="text" placeholder="Add a Comment...">
+        <button onclick="addComment(${post.id }, document.querySelector('#comment${post.id}').value)">Add comment</button>
     </section>
 `;
 
@@ -254,10 +260,6 @@ const post2Modal = post => {
 const closeModal = ev =>{
     console.log("close modal")
     document.querySelector('.modal-bg').remove();
-
-}
-const addComment = ev => {
-    console.log('adding comment')
 
 }
 const displayPosts = () => {
@@ -330,6 +332,7 @@ const createFollower = (userId, elem) => {
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         elem.innerHTML = "unfollow"
         elem.setAttribute('aria-checked', 'true')
         elem.classList.add('unfollow')
@@ -339,6 +342,25 @@ const createFollower = (userId, elem) => {
 
 }
 
+const addComment = (postId, text) => {
+    const postData = {
+        "post_id": postId,
+        "text": text
+    }
+    fetch("/api/comments",{
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        redrawPost(postId)
+    })
+}
+
 const deleteFollower = (followingId,elem) => {
     const deleteURL = `/api/following/${followingId}`;
     fetch(deleteURL, {
@@ -346,6 +368,7 @@ const deleteFollower = (followingId,elem) => {
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         elem.innerHTML = "follow"
         elem.classList.add('follow')
         elem.classList.remove('unfollow')
