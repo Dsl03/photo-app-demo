@@ -29,7 +29,11 @@ const renderLikeButton = post => {
             aria-label = "Like/ Unlike"
             aria-checked = "true"
             onclick ="handleLike(event);">
-            <i class = "fas fa-heart"></i>
+            <div class = "commenticons">
+                <i class = "fas fa-heart"></i>
+                <i class="far fa-comment" style="padding-left:5px; padding-right:1px"></i>
+                <i class="far fa-paper-plane" style="padding-left:1px; padding-right:5px"></i>
+            </div>
         </button>
         `;
     } else {
@@ -40,7 +44,11 @@ const renderLikeButton = post => {
             aria-label = "Like/ Unlike"
             aria-checked = "false"
             onclick ="handleLike(event);">
-            <i class = "far fa-heart"></i>
+            <div class = "commenticons">
+                <i class = "far fa-heart"></i>
+                <i class="far fa-comment " style="padding-left:5px; padding-right:1px"></i>
+                <i class="far fa-paper-plane" style="padding-left:1px; padding-right:5px"></i>
+            </div>
         </button>
         `;
     }
@@ -206,9 +214,10 @@ const displayComments = post => {
         //return first comment
         
         return `
-        <div>
-            <button data-post-id=${post.id} onclick="showModal(event)">View All ${post.comments.length} Comments</button>
-            <p>${post.comments[post.comments.length-1].text}</p>
+        <div style="padding-left: 10px; padding-right: 10px">
+            <button data-post-id=${post.id} onclick="showModal(event)" id="viewcommentbutton">View All ${post.comments.length} Comments</button>
+            <p style="margin-bottom: 4px; margin-top: 4px"><strong>${post.comments[post.comments.length-1].user.username}</strong> ${post.comments[post.comments.length-1].text}</p>
+            <p style="color: grey; font-size: 15px; margin-top: 5px">${post.comments[post.comments.length-1].display_time}</P>
         </div>`
     }
     else if (post.comments.length === 1){
@@ -237,10 +246,13 @@ const post2Html = post => {
             ${renderBookmarkButton(post)}
 
         </div>
-        <p>${post.caption }</p>
+        <p style="padding-left: 10px; padding-right: 10px; font-weight: bold">${post.likes.length} likes</p>
+        <p style="padding-left: 10px; padding-right: 10px; margin-bottom: 4px"><strong>${post.user.username}</strong> ${post.caption }</p>
         ${displayComments(post)}
-        <input id="comment${post.id}" type="text" placeholder="Add a Comment...">
-        <button onclick="addComment(${post.id }, document.querySelector('#comment${post.id}').value)">Add comment</button>
+        <div id="spacecommentpost">
+            <input style="border: hidden" id="comment${post.id}" type="text" placeholder="Add a Comment...">
+            <button id = "addcomment" onclick="addComment(${post.id }, document.querySelector('#comment${post.id}').value)">Post</button>
+        </div>
     </section>
 `;
 
@@ -251,12 +263,22 @@ const post2Modal = post => {
     <div class ="modal-bg" aria-hidden="false" role="dialog">
         <section class="modal">
             <button class="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
-            <img src="${post.image_url}"/>
+            <div id="modaldp">
+                <img src="${post.image_url}"/>
+                <div>
+                    <p>${post.comments.map(comment2Html).join('\n')}</p>
+                </div>
+            </div>
         </section>
     </div>
     `
 }
 
+const comment2Html= comment => {
+    return `
+    <p>${comment.text}</p>
+    `
+}
 const closeModal = ev =>{
     console.log("close modal")
     document.querySelector('.modal-bg').remove();

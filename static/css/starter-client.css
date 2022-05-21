@@ -391,6 +391,30 @@ main{
     border-bottom: solid 1px #CCC;
 }
 
+#viewcommentbutton{
+    color: #2c699b;
+    text-decoration: none;
+    border: hidden;
+    background-color: white;
+}
+
+#addcomment{
+    color: #2c699b;
+    text-decoration: none;
+    border: hidden;
+    background-color: white;
+}
+
+#modaldp{
+    display: flex;
+}
+#spacecommentpost{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
 @media (max-width: 900px) {
     aside {
         display: none;
