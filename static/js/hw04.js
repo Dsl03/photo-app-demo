@@ -263,10 +263,17 @@ const post2Modal = post => {
     <div class ="modal-bg" aria-hidden="false" role="dialog">
         <section class="modal">
             <button class="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
-            <div id="modaldp">
-                <img src="${post.image_url}"/>
-                <div>
-                    <p>${post.comments.map(comment2Html).join('\n')}</p>
+            <div id="modaldp" style="overflow-y: auto; height: 55vh; position:relative">
+                <img style="position:fixed; right: 20vw; left: 20vw; width: 40vw " src="${post.image_url}"/>
+                <div style="position:relative; width: 20vw; margin-left: 40vw">
+                    <div class = "profile">
+                        <img src="${ post.user.thumb_url }" style="border-radius: 50%" alt="user profile pic for ${ post.user.username }" />
+                        <p>${ post.user.username }</p>
+                    </div>
+                    <p style="margin-bottom: 2px;"><strong>${post.user.username}</strong> ${post.caption}</p>
+                    <p style="margin-top: 2px; color: grey">${post.display_time}</p>
+                    <p >${post.comments.map(comment2Html).join('\n')}</p>
+                    
                 </div>
             </div>
         </section>
@@ -276,7 +283,8 @@ const post2Modal = post => {
 
 const comment2Html= comment => {
     return `
-    <p>${comment.text}</p>
+    <p style="margin-bottom: 2px;"><strong>${comment.user.username}</strong> ${comment.text}</p>
+    <p style="margin-top: 2px; color: grey">${comment.display_time}</p>
     `
 }
 const closeModal = ev =>{
