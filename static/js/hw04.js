@@ -261,17 +261,27 @@ const post2Html = post => {
 const post2Modal = post => {
     return `
     <div class ="modal-bg" aria-hidden="false" role="dialog">
+    <button class="close" 
+        aria-label="Close the modal window" onclick="closeModal(event);"> 
+        x
+    </button>
         <section class="modal">
-            <button class="close" aria-label="Close the modal window" onclick="closeModal(event);">Close</button>
             <div id="modaldp" style="overflow-y: auto; height: 55vh; position:relative">
                 <img style="position:fixed; right: 20vw; left: 20vw; width: 40vw " src="${post.image_url}"/>
                 <div style="position:relative; width: 20vw; margin-left: 40vw">
                     <div class = "profile">
-                        <img src="${ post.user.thumb_url }" style="border-radius: 50%" alt="user profile pic for ${ post.user.username }" />
-                        <p>${ post.user.username }</p>
+                        <img src="${ post.user.thumb_url }" style="border-radius: 50%; width: 50px; height: 50px;" alt="user profile pic for ${ post.user.username }" />
+                        <p style = " font-size:20px; margin-left:8px;">${ post.user.username }</p>
                     </div>
-                    <p style="margin-bottom: 2px;"><strong>${post.user.username}</strong> ${post.caption}</p>
-                    <p style="margin-top: 2px; color: grey">${post.display_time}</p>
+                    <div class = "user-modal-comment">
+                        <p> <img src="${ post.user.thumb_url }" style="border-radius: 50%; width: 50px; height: 50px;" alt="user profile pic for ${ post.user.username }" />
+                        <div class = "user-modal-comment-text"
+                            <p> <strong>${post.user.username}</strong> 
+                            ${post.caption}</p>
+                            <p style="margin-top: 2px; color: grey">${post.display_time}</p>
+                        </div>
+                    <button>  <i class = "far fa-heart" style = "border: none; background-color: transparent;"></i> </button> 
+                    </div>
                     <p >${post.comments.map(comment2Html).join('\n')}</p>
                     
                 </div>
@@ -283,8 +293,15 @@ const post2Modal = post => {
 
 const comment2Html= comment => {
     return `
-    <p style="margin-bottom: 2px;"><strong>${comment.user.username}</strong> ${comment.text}</p>
-    <p style="margin-top: 2px; color: grey">${comment.display_time}</p>
+    <div class = "comment">
+        <img src="${ comment.user.thumb_url }" style="border-radius: 50%; width: 50px; height: 50px; margin-left:8px; margin-right:8px; " alt="user profile pic for ${ comment.user.username }" />
+        <div class = "comment-text">
+            <p> <strong>${comment.user.username}</strong>
+            ${comment.text}</p>
+        <p style="margin-top: 2px; color: grey">${comment.display_time}</p>
+        </div>
+    <button>  <i class = "far fa-heart" style = "border: none; background-color: transparent;"></i> </button> 
+    </div>
     `
 }
 const closeModal = ev =>{
