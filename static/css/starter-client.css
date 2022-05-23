@@ -432,7 +432,9 @@ main{
     grid-template-columns: 70px auto 25px;
     margin-bottom: 2px;
 }
-
+.hidemodal{
+    display:none;
+}
 @media (max-width: 900px) {
     aside {
         display: none;

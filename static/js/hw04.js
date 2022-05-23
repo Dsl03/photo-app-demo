@@ -250,9 +250,9 @@ const post2Html = post => {
         <p style="padding-left: 10px; padding-right: 10px; font-weight: bold">${post.likes.length} likes</p>
         <p style="padding-left: 10px; padding-right: 10px; margin-bottom: 4px"><strong>${post.user.username}</strong> ${post.caption }</p>
         ${displayComments(post)}
-        <form id="spacecommentpost">
+        <form onsubmit="return false" id="spacecommentpost">
             <input style="border: hidden" id="comment${post.id}" type="text" placeholder="Add a Comment...">
-            <button id = "addcomment" type="submit "onclick="addComment(${post.id }, document.querySelector('#comment${post.id}').value)">Post</button>
+            <button id = "addcomment" type="button "onclick="addComment(${post.id }, document.querySelector('#comment${post.id}').value)">Post</button>
         </form>
     </section>
 `;
