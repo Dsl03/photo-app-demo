@@ -231,6 +231,7 @@ const displayComments = post => {
 const showModal = ev => {
     const postId = Number(ev.currentTarget.dataset.postId);
     redrawPost(postId, post => {
+        
         const html = post2Modal(post);
         document.querySelector(`#post_${post.id}`).insertAdjacentHTML('beforeend', html);
     })
@@ -249,10 +250,10 @@ const post2Html = post => {
         <p style="padding-left: 10px; padding-right: 10px; font-weight: bold">${post.likes.length} likes</p>
         <p style="padding-left: 10px; padding-right: 10px; margin-bottom: 4px"><strong>${post.user.username}</strong> ${post.caption }</p>
         ${displayComments(post)}
-        <div id="spacecommentpost">
+        <form id="spacecommentpost">
             <input style="border: hidden" id="comment${post.id}" type="text" placeholder="Add a Comment...">
-            <button id = "addcomment" onclick="addComment(${post.id }, document.querySelector('#comment${post.id}').value)">Post</button>
-        </div>
+            <button id = "addcomment" type="submit "onclick="addComment(${post.id }, document.querySelector('#comment${post.id}').value)">Post</button>
+        </form>
     </section>
 `;
 
@@ -261,7 +262,7 @@ const post2Html = post => {
 const post2Modal = post => {
     return `
     <div class ="modal-bg" aria-hidden="false" role="dialog">
-    <button class="close" 
+    <button class="close"
         aria-label="Close the modal window" onclick="closeModal(event);"> 
         x
     </button>
@@ -280,7 +281,7 @@ const post2Modal = post => {
                             ${post.caption}</p>
                             <p style="margin-top: 2px; color: grey">${post.display_time}</p>
                         </div>
-                    <button>  <i class = "far fa-heart" style = "border: none; background-color: transparent;"></i> </button> 
+                    <button style="border:hidden; background-color:white">  <i class = "far fa-heart" style = "border: none; background-color: transparent;"></i> </button> 
                     </div>
                     <p >${post.comments.map(comment2Html).join('\n')}</p>
                     
@@ -300,7 +301,7 @@ const comment2Html= comment => {
             ${comment.text}</p>
         <p style="margin-top: 2px; color: grey">${comment.display_time}</p>
         </div>
-    <button>  <i class = "far fa-heart" style = "border: none; background-color: transparent;"></i> </button> 
+    <button style="border:hidden; background-color:white">  <i class = "far fa-heart"></i> </button> 
     </div>
     `
 }
