@@ -5,6 +5,8 @@ def jwt_or_login(view_function):
     def wrapper(*args, **kwargs):
         try:
             flask_jwt_extended.verify_jwt_in_request()
+            #this is the inner function (which is below the decorator)
+            # that executes only if some condition is met.
             return view_function(*args, **kwargs)
         except:
             return redirect('/login', code=302)
