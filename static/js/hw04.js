@@ -102,6 +102,8 @@ const unlikePost = elem => {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
+
         }
     })
     .then(response => response.json())
@@ -122,6 +124,7 @@ const unbookmarkPost = elem => {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         }
     })
     .then(response => response.json())
@@ -167,6 +170,7 @@ const likePost = elem => {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         },
         body: JSON.stringify(postData)
     })
@@ -191,6 +195,7 @@ const bookmarkPost = elem => {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         },
         body: JSON.stringify(postData)
     })
@@ -343,10 +348,11 @@ const profile2Html = profile => {
 // fetch data from your API endpoint:
 const displayProfile = () => {
     fetch("/api/profile/", {
-        // method: "GET",
-        // headers: {
-        //     'Content-Type': 'application/json',
-        // }
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
+        },
     })
     .then(response => response.json())
     .then(profile =>  {
@@ -375,6 +381,7 @@ const createFollower = (userId, elem) => {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         },
         body: JSON.stringify(postData)
     })
@@ -399,6 +406,7 @@ const addComment = (postId, text) => {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
         },
         body: JSON.stringify(postData)
     })
@@ -413,6 +421,10 @@ const deleteFollower = (followingId,elem) => {
     const deleteURL = `/api/following/${followingId}`;
     fetch(deleteURL, {
         method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': getCookie('csrf_access_token')
+        },
     })
     .then(response => response.json())
     .then(data => {
@@ -459,5 +471,22 @@ const initPage = () => {
    
 };
 
+const getCookie = key => {
+    let name = key + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    console.log(decodedCookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        console.log(c);
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+};
 // invoke init page to display stories:
 initPage();
