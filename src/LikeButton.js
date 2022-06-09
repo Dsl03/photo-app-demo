@@ -58,10 +58,10 @@ class LikeButton extends React.Component {
         const likeId = this.props.likeId
         const classFill = likeId ? 'fas fa-heart' : 'far fa-heart'
         return (
-            <button 
+            <button
                 onClick={this.toggleLike}
                 aria-label="like/unlike">
-                <i className={classFill}></i>
+                <i className={classFill} ></i>
             </button>
         )
     }

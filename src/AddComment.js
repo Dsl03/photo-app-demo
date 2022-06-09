@@ -39,12 +39,15 @@ class AddComment extends React.Component{
     }
     render () {
         return(
-            <form onSubmit={this.retf}>
-                <label>
-                    Add a Comment
-                    <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                </label>
-                <button type="button" onClick={this.AddComment}>Post</button>
+            <form className = "form" onSubmit={this.retf}>
+                <div>
+                    <label>
+                        <input type="text" placeholder='Add a Comment...' value={this.state.value} onChange={this.handleChange}/>
+                    </label>
+                </div>
+                <div>
+                    <button type="button" onClick={this.AddComment}>Post</button>
+                </div>
             </form>
         )
     }
