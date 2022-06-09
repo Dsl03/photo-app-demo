@@ -9,6 +9,7 @@ class AddComment extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.AddComment = this.AddComment.bind(this);
         this.retf = this.retf.bind(this);
+        // this.onFormSubmit = this.onFormSubmit(this);
     
     }
 
@@ -37,16 +38,25 @@ class AddComment extends React.Component{
     retf(){
         return false
     }
+
+    onFormSubmit = e => {
+        e.preventDefault()
+        this.AddComment
+        // send to server with e.g. `window.fetch`
+        this.state.value = '';
+        return false
+      }
+
     render () {
         return(
-            <form className = "form" onSubmit={this.retf}>
+            <form className = "form" onSubmit={this.onFormSubmit}>
                 <div>
                     <label>
                         <input type="text" placeholder='Add a Comment...' value={this.state.value} onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div>
-                    <button type="button" onClick={this.AddComment}>Post</button>
+                    <button type="submit" onClick={this.AddComment}>Post</button>
                 </div>
             </form>
         )
